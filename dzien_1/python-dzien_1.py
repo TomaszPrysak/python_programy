@@ -326,7 +326,7 @@ print("Czy napisy są sobie równe: ", n1==n2)
 #
 
 print("imie\t"+"nazwiko\t"+"stanowisko")
-'''
+
 # ćwiczenie 17
 
 spk = int(input("Podaj stank konta: "))
@@ -336,3 +336,5 @@ n = int(input("Podaj liczbę lat: "))
 res = spk*(1+(r/100))**n
 
 print("Kwota po " + str(n) + " latach wynosi: " + str(res) + " zł.")
+'''
+### moment zrzucenia na GITa
