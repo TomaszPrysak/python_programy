@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
-'''
+
+###
 ### typy sekwencyjne
+###
+
 ## 1. typy napisów
 
 napis = "To jest długi napis"
@@ -78,7 +81,7 @@ print("Data spożycia artykułów")
 print(krotka_data[0][0] + "\t" + krotka_data[1][0])
 print(krotka_data[0][1] + "\t" + krotka_data[1][1])
 print(krotka_data[0][2] + "\t" + krotka_data[1][2])
-'''
+
 # ćwiczenie 20
 
 tabela = [("Nowak", "Kowalski", "Prysak"), ("1987-02-25", "1990-02-25", "1990-10-02"), ["murarz", "tynkarz", "mechooptyk"]]
