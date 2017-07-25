@@ -247,7 +247,7 @@ while (i >= 0):
 else: # else wywołuje się w momencie kiedy wykonane zostaną wszystkie interacje i program przechodzi do instrukcji ELSE
     print("Jestem w ELSE")
 print("Poza pętlą")
-'''
+
 ## Zagnieżdżęnie trójarguimentowe
 
 a = 31
@@ -255,3 +255,139 @@ a = 31
 b = 30
 
 print("a jest większe od b o: ", a-b) if (a>=b) else print("a jest mniejsze od b o:", b-a)
+
+## pętla for-in stosowana do list
+
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+for var in lista:
+    print("Wartość: " + str(var))
+    
+for index, var in enumerate(lista):
+    print("Index: " + str(index) + "\tWartość: " + str(var))
+
+## petla for-in stosowana do słowników
+    
+slownik = {1: "Tomek", 2: "Prysak", 3: "Mistrz"}
+
+for key in slownik:
+    print(key, slownik[key])
+
+
+    
+# zagnieżdżenia
+
+slownik = {"a": 1, "b": 2, "c": 3}
+
+for key in slownik:
+    if (slownik[key] >= 2):
+        print(key, slownik[key])
+      
+## szybkie sekwencje bez konieczności wpisywania zawartości w tabeli
+
+s1 = range(100)
+# wypisywanie wszystkich wartość z listy
+for i in s1:
+    print(i)
+# bezpośrednie umieszczenie funkcji tworzenia listy w funkcji for-in
+for j in range(10,16):
+    print(j)
+# wypisywanie wartosci z listy co jakis skok
+for x in range(10,21,2):
+    print(x)
+# wypisanie wartości z listy z jednoczesnym podniesieniem jej do kwadratu
+for x in range(10,21,2):
+    print(x, x**2)    
+    
+
+# formatowanie wypisywania zawartości z listy
+
+for k in range(0, 100):
+    print("Wynik: %4i%6i%8i" % (k, k**2, k**3)) # każdy procent odpowiada konkretnym miejscom k w nawiasie --- pierwszy % -> k, drugi % -> k**2, trzeci % -> k**3
+
+for x in range(0,100): 
+    print("Pierwiastkiem liczby %2i jest %-5.3f" % (x, x**0.5)) # zwrócić uwagę na znaki tuż po procentach w stringu....
+    
+
+# ćwiczenie 29
+
+sklep_produkty = {"komputer" : 1, "drukarka" : 2, "monitor" : 3, "myszka" : 4, "klawiatura" : 5, "głośniki" : 6}
+produkty_cena = {1: 2500, 2:350, 3:780, 4:45, 5:80, 6:150}
+produkty_dostepnosc = {1: 8, 2:13, 3:7, 4:99, 5:9, 6:4}
+
+suma = 0
+tn = "t"
+
+while (tn == "t"):
+        zamowienie = input("Podaj towar: ")
+        zamowienie_ilosc = int(input("Podaj ilość sztuk zamawianego produktu: "))
+        if (zamowienie in sklep_produkty.keys()):
+                if (produkty_dostepnosc[sklep_produkty[zamowienie]] >= zamowienie_ilosc):
+                        print("Produkt " + "'" + zamowienie + "'" + " jest dostępny")
+                        print("Zamawiasz: " + str(zamowienie_ilosc) + " szt.")
+                        suma += zamowienie_ilosc*produkty_cena[sklep_produkty[zamowienie]]
+                elif (produkty_dostepnosc[sklep_produkty[zamowienie]] < zamowienie_ilosc):
+                        print("Produk jest dostępny: " + zamowienie)
+                        print("Dostepne jest tylko: " + str(produkty_dostepnosc[sklep_produkty[zamowienie]]) + " szt")
+                else:
+                        print("Brak produktu w sklepie")
+        tn = input("Czy chcesz zamawiać dalej (tak/nie) ? ")         
+print("Do zapłaty: " + str(suma))
+
+
+# ćwiczenie 30
+
+# wersja 1
+cyfry = {"0":"zero","1":"jeden","2":"dwa","3":"trzy","4":"cztery","5":"pięć","6":"sześć","7":"siedem","8":"osiem","9":"dziewięć"}
+
+lista= []
+i ="t"
+
+while (i == "t"):
+    liczba = input("Podaj wartosć (cyfrę z przedziału 0-9) do przekonwertowania na formę tekstową: ")
+    if (liczba.isdigit()):
+        lista.append(cyfry[liczba]) # tutaj dodaje do listy nie cyfrę wprowadzoną przez użytkownika, a cyfrę słownie którą pobiera ze słownika
+    else:
+        print("Wprowadzona wartość nie jest cyfrą")
+    i = input("Czy chcesz podać nową wartość (cyfrę z przedziału 0-9) ? (tak/nie)")
+    
+for i in lista:
+    print(i, end="")
+
+# wersja 2
+cyfry = {"0":"zero","1":"jeden","2":"dwa","3":"trzy","4":"cztery","5":"pięć","6":"sześć","7":"siedem","8":"osiem","9":"dziewięć"}
+    
+lista= []
+i ="t"
+    
+while (i == "t"):
+    liczba = input("Podaj wartosć (cyfrę z przedziału 0-9) do przekonwertowania na formę tekstową: ")
+    if (liczba.isdigit()):
+        lista.append(liczba) # tutaj dodaje do listy nie cyfrę wprowadzoną przez użytkownika, a cyfrę słownie którą pobiera ze słownika
+    else:
+        print("Wprowadzona wartość nie jest cyfrą")
+    i = input("Czy chcesz podać nową wartość (cyfrę z przedziału 0-9) ? (tak/nie)")
+    
+print(lista)
+print(cyfra[lista[0]])
+
+# ćwiczenie 31
+
+print("    %4i%4i%4i%4i%4i%4i%4i%4i%4i%4i" % (1,2,3,4,5,6,7,8,9,10))
+print("============================================")
+
+for i in range(1,11):
+    print(str(i) + "|", end="")) # end="" - wymuszamy brak przejścia do nowej lini
+    print("%4i%4i%4i%4i%4i%4i%4i%4i%4i%4i" % (i, i*2, i*3, i*4,i*5,i*6,i*7,i*8,i*9,i*10))
+    '''
+
+# ćwiczenie 32
+
+lista = range(1,10,2)
+
+i = len(lista) - 1
+while (i>=0):
+    print(lista[i]**2)
+    i = i - 1
+    
+### moment zrzucenia do GITa
