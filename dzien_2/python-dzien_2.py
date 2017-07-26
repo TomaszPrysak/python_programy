@@ -376,7 +376,7 @@ print("    %4i%4i%4i%4i%4i%4i%4i%4i%4i%4i" % (1,2,3,4,5,6,7,8,9,10))
 print("============================================")
 
 for i in range(1,11):
-    print(str(i) + "|", end="")) # end="" - wymuszamy brak przejścia do nowej lini))
+    print(str(i) + "|", end="")) # end="" - wymuszamy brak przejścia do nowej lini
     print("%4i%4i%4i%4i%4i%4i%4i%4i%4i%4i" % (i, i*2, i*3, i*4,i*5,i*6,i*7,i*8,i*9,i*10))
 
 
