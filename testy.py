@@ -1,29 +1,28 @@
 # -*- coding: utf-8 -*-
 
-# ćwiczenie 39
-# tabela przeliczen Celcjusza na Farenhajta z przedziału podawanego przez użytkownika oraz kroku też przez użytkownika
+import random
 
-oceny = ("1", "1.5", "2", "2.5", "3", "3.5", "4", "4.5", "5" "5.5", "6")
+from math import sqrt
 
-uczen = []
+# ćwiczenie 44
 
-i = "a"
+def odleglosc(x1,y1,x2,y2):
+    d = sqrt(((x2-x1)**2)+((y2-y1)**2))
+    return round(d, 2)
 
-while (i != ""): 
-    i = input("Podaj ocenę: ")
-    if (i in oceny):
-        uczen.append(float(i))
-    elif (i == ""):
-        print("Naciśnięcie ENTER spowodowało zakończenie wprowadzania ocen")
+i = 0
+x = []
+y = []
+
+while (i < 2):
+    if (i == 1):
+        print("Podaj położenie końcowe:")
     else:
-        print("Podana wartość nie jest jest oceną")
+        print("Podaj położenie początkowe:")
+    u1 = int(input(" "))
+    u2 = int(input(" "))
+    x.append(u1)
+    y.append(u2)
+    i = i + 1
 
-print(uczen)
-
-sr = 0 
-if (len(uczen) != 0):
-    for i in uczen:
-        sr = sr + i
-        print("Średnia Twoich ocen: ", round(sr/len(uczen), 2))
-else:
-    print("Brak podanych ocen do wyliczenia średniej")
+print("Przejdziesz dystans: ", odleglosc(x[0],y[0],x[1],y[1]))
