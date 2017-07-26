@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import random
 
-'''
+
 ### typy sekwencyjne 
 ## 4. typy słowników
 # w typach słowników stosujemy nawiasy klamrowe {}
@@ -334,7 +334,6 @@ while (tn == "t"):
         tn = input("Czy chcesz zamawiać dalej (tak/nie) ? ")         
 print("Do zapłaty: " + str(suma))
 
-
 # ćwiczenie 30
 
 # wersja 1
@@ -377,9 +376,9 @@ print("    %4i%4i%4i%4i%4i%4i%4i%4i%4i%4i" % (1,2,3,4,5,6,7,8,9,10))
 print("============================================")
 
 for i in range(1,11):
-    print(str(i) + "|", end="")) # end="" - wymuszamy brak przejścia do nowej lini
+    print(str(i) + "|", end="")) # end="" - wymuszamy brak przejścia do nowej lini))
     print("%4i%4i%4i%4i%4i%4i%4i%4i%4i%4i" % (i, i*2, i*3, i*4,i*5,i*6,i*7,i*8,i*9,i*10))
-    '''
+
 
 # ćwiczenie 32
 
