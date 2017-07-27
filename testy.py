@@ -2,27 +2,36 @@
 
 import random
 
-from math import sqrt
+# ćwiczenie 50
 
-# ćwiczenie 44
+def wprowadz():
+   tab = []
+   i = "t"
+   print("Wprowadz elementy do listy | (enter) - koniec wprowadzania ")
+   while (i != ""):
+      i = input(" ")
+      if (i != ""):
+         while (True):
+            try:
+               i = float(i)
+               break
+            except ValueError:
+               print("Wprowadzona wartość jest błędna. Podaj wartość poprawną: ")
+               i = input(" ")
+         tab.append(float(i))
+      elif (i== ""):
+         print("Nacisnąłeś ENTER. wpraowadzanie zostało zakończone")
+         print("Twoja tablica wygląda następująco:")
+         print(tab)
+         return tab
+   
+def wypisz(limit, tab):
+   print("Tablica przefiltrowana. Elementy większe od " + str(limit))
+   suma = 0
+   for v in tab:
+      if (v > limit):
+         print(v, end=" ")
+         suma = suma + v
+   print("Suma: ",suma)
 
-def odleglosc(x1,y1,x2,y2):
-    d = sqrt(((x2-x1)**2)+((y2-y1)**2))
-    return round(d, 2)
-
-i = 0
-x = []
-y = []
-
-while (i < 2):
-    if (i == 1):
-        print("Podaj położenie końcowe:")
-    else:
-        print("Podaj położenie początkowe:")
-    u1 = int(input(" "))
-    u2 = int(input(" "))
-    x.append(u1)
-    y.append(u2)
-    i = i + 1
-
-print("Przejdziesz dystans: ", odleglosc(x[0],y[0],x[1],y[1]))
+wypisz(int(input("Podaj wartość graniczą: ")), wprowadz())
