@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import random
+
 ###
 ### Obiekty
 ###
@@ -7,6 +9,8 @@
 # Klasy nadają cechy obiektom, przez które obiekty działają w konkretny sposób
 
 # Klasa to worek w którym znajdują się nasze obiekty które mogą korzystać z cech naszej klasy
+
+# zawsze sobie wszystko rozpisywać na kartce co się będzie działo w naszych klasach i deinicjach naszego programu, np w momencie utworzenia naszego obiektu co się dzieje w klasie
 
 # pierwsza klasa:
 
@@ -70,7 +74,6 @@ class BMI:
         self.waga = waga
         self.wzrost = wzrost
         self.obliczenia()
-        
     def obliczenia(self):
         self.bmi = round(self.waga / ((self.wzrost/100)**2), 2)
     
@@ -113,4 +116,89 @@ class LOTTO:
         print(random.sample(range(1,50),6))
 
 for v in range(1,7):
-    lotto1 = (LOTTO)
+    lotto1 = (LOTTO)    
+    
+# ćwiczenie 53
+
+class LOTTO:
+    def __init__(self):
+        self.l = range(1,50)
+        self.tab = random.sample(self.l,6)
+        self.sort()
+    def sort(self):
+        self.tab_sort = sorted(self.tab)
+    def __str__(self):
+        self.res = ""
+        for i, v in enumerate(self.tab_sort):
+            if (i == len(self.tab_sort) - 1):
+                self.res = self.res + str(v)
+            else:
+                self.res = self.res = str(v) + " "
+        return "Wynik losowania: " + self.res
+        
+lotto1 = LOTTO()
+print(lotto1)
+
+## dziedziczenie klas
+# aby przeciążyć metody muszą się one tak samo nazywać
+# ćwiczenie 54
+
+class szkolenia: # klasa bazowa
+    def __init__(self, nazwa, termin, cena_n, il_os):
+        self.nazwa = nazwa
+        self.termin = termin
+        self.cena_n = cena_n
+        self.il_os = il_os
+    def obliczCalk(self):
+        self.suma_b = self.cena_n * self.il_os * 1.23
+        return self.suma_b
+
+class technologie(szkolenia):
+    def __init__(self, nazwa, termin, cena_n, il_os, technologia, poziom): # podczas dziedziczenia klas w klasie podrzędnej "technologie" muszę podać argumenty które będe pobierać z klasy nadrzędnej "szkolenia" PLUS moje nowe argumenty
+        super().__init__(nazwa, termin, cena_n, il_os) # pobieranie argumentów z klasy "szkolenia"
+        self.technologia = technologia
+        self.poziom = poziom
+        
+class trenerzy(technologie):
+    def __init__(self, nazwa, termin, cena_n, il_os, technologia, poziom, imie, nazwisko, pensja):
+        super().__init__(nazwa, termin, cena_n, il_os, technologia, poziom) # super oznacza żeby interpreter szukał w klasie wyżej
+        self.imie = imie
+        self.nazwisko = nazwisko
+        self.pensja = pensja
+    def obliczCalkTrenerzy(self): # dziedziczenie metody z klasy "szkolenia"
+        return self.obliczCalk() - (self.pensja * 1.23) 
+        
+
+s1 = technologie("Python dla dzieci", "2017-09-10", 2000, 10, "Python 3,6", "podstawowy")
+print(s1.obliczCalk())
+
+s2 = trenerzy("Python dla dzieci", "2017-09-10", 2000, 10, "Python 3,6", "podstawowy", "Tomasz", "Prysak", 10000)
+print(s2.obliczCalkTrenerzy())
+
+# ćwiczenie 55
+
+class produkt:
+    def __init__(self, nazwa, cena):
+        self.nazwa = nazwa
+        self.cena = cena
+    def __str__(self):
+        return "Produkt: " + self.nazwa + " o cenie: " + str(self.cena)
+class oprogramowanie(produkt):
+    def __init__(self, nazwa, cena, jezyk, system): 
+        super().__init__(nazwa, cena) 
+        self.jezyk = jezyk
+        self.system = system
+    def __str__(self):
+        return "Produkt: " + self.nazwa + " o cenie: " + str(self.cena) + " " + self.jezyk + " " + self.system
+class szkolenie(oprogramowanie):
+    def __init__(self, nazwa, cena, jezyk, system, termin):
+        super().__init__(nazwa, cena, jezyk, system)
+        self.termin = termin
+    def __str__(self):
+        return "Produkt: " + self.nazwa + " o cenie: " + str(self.cena) + " " + self.jezyk + " " + self.system + " " + self.termin
+
+sk1 = szkolenie("Witaj Python", 1000, "Python2.8", "MacOS", "2017-09-10")
+
+print(sk1)
+
+# ćwiczenie 56

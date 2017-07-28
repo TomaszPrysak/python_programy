@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import random
+
 # ćwiczenie 46
 # rysowanie wykresu
 def wykres(opcja, ilosc=10, znak="*"): # ilosc i znak to parametry funkcji
